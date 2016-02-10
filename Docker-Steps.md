@@ -24,7 +24,7 @@ Create a hydra-jetty for FEDORA3 image, create another one named hydra-jetty. Al
 
 ```bash
 cd $PROJECTS/devops/docker/hydra-jetty-fedora3
-docker build -t library/hydra-jetty:7.2.0rc1 .
+docker build -t library/hydra-jetty:7.2.0 .
 docker build -t library/hydra-jetty .
 ```
 
@@ -44,7 +44,7 @@ docker build -t hydra-dev:jdk8 .
 
 ```bash
 cd $PROJECTS/hydra/hydra-jetty
-docker run -d --name jetty hydra-jetty:7.2.0rc1
+docker run -d --name jetty hydra-jetty:7.2.0
 cd $PROJECTS/hydra/cdm/tul_cdm
 docker run -itdP -v $(pwd):/app --name hydra-cdm --link jetty hydra-dev:jdk8
 ```
@@ -77,7 +77,7 @@ To log into the hydra-dev container, note the following session and output
 $ docker ps
 CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                                                                                              NAMES
 6a531f760abe        hydra-dev:jdk8         "/usr/sbin/sshd -D"      5 seconds ago       Up 4 seconds        0.0.0.0:32771->22/tcp, 0.0.0.0:32770->3000/tcp, 0.0.0.0:32769->8983/tcp, 0.0.0.0:32768->8986/tcp   hydra-cdm
-6cc5d6ea8bff        hydra-jetty:7.2.0rc1   "java -Xmx512m -XX:Ma"   29 seconds ago      Up 29 seconds       8983/tcp, 8986/tcp                                                                                 jetty
+6cc5d6ea8bff        hydra-jetty:7.2.0      "java -Xmx512m -XX:Ma"   29 seconds ago      Up 29 seconds       8983/tcp, 8986/tcp                                                                                 jetty
 $ ssh-docker dev 32771
 The authenticity of host '[192.168.99.103]:32771 ([192.168.99.103]:32771)' can't be established.
 RSA key fingerprint is SHA256:JGMXNPMS7u2DWL/FPlQXXCMMJVWFLDFO1T9lj0pWxOQ.
