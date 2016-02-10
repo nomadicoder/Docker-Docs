@@ -54,6 +54,12 @@ To set fedora3 work director see: https://wiki.apache.org/solr/SolrConfigXml
 ```bash
 docker run -dP -v $(pwd):/data --name jetty-fedora4 hydra-jetty:latest
 ```
+To expose standard ports and connect:
+
+```bash
+docker run -d -p 8983-8986:8983-8986/tcp -v $(pwd):/data --name jetty-fedora4 hydra-jetty:latest
+docker run -itd -p 2022:22/tcp -p 3000:3000/tcp -v $(pwd):/app --name hydra-cdm --link jetty hydra-dev:jdk8
+```
 
 Configure Hydra on Docker to use the Jetty server for Fedora and Sufia
 
